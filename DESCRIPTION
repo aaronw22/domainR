@@ -1,0 +1,22 @@
+Package: domainR
+Type: Package
+Title: Functions For Scraping domain.com.au
+Version: 0.1.0
+Author: person("Aaron", "Wong", "aaron.wong22@gmail.com", role = c("aut", "cre"))
+Description: Functions for scraping data from domain.com.au.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Imports:
+    data.table (>= 1.14.0),
+    magrittr (>= 2.0.1),
+    dplyr (>= 1.0.5),
+    lubridate (>= 1.7.10),
+    stringr (>= 1.4.0),
+    rvest (>= 1.0.0),
+    httr (>= 1.4.2),
+    purrrgress (>= 0.0.1)
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+RoxygenNote: 7.1.1
