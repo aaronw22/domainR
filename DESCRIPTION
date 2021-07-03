@@ -4,7 +4,7 @@ Title: Functions For Scraping domain.com.au
 Version: 0.1.0
 Author: person("Aaron", "Wong", "aaron.wong22@gmail.com", role = c("aut", "cre"))
 Description: Functions for scraping data from domain.com.au.
-License: What license is it under?
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Imports:
@@ -16,6 +16,8 @@ Imports:
     rvest (>= 1.0.0),
     httr (>= 1.4.2),
     purrrgress (>= 0.0.1)
+Remotes:
+    TylerGrantSmith/purrrgress
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
