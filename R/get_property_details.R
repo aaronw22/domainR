@@ -123,8 +123,8 @@ get_property_details <- function(urls, get_sale = F) {
   # With a progress bar and returns NA for bad URLs instead of breaking
   prop_details <-
     urls %>%
-    purrrgress::pro_map(purrr::possibly(scrape_prop_details, NA)) %>%
-    data.table::rbindlist()
+    purrrgress::pro_map(purrr::possibly(scrape_prop_details, data.table::data.table(address = NA))) %>%
+    data.table::rbindlist(fill = T)
 
   # Filter out bad results using address column
   prop_details <- prop_details[!is.na(address), ]
