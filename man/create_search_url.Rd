@@ -10,6 +10,7 @@ create_search_url(
   beds = NULL,
   baths = NULL,
   price = NULL,
+  exclude_houses = T,
   exclude = T,
  
     ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"
@@ -33,6 +34,9 @@ with the same format as the number of bedrooms parameter.}
 prices with the same format as the number of bedrooms parameter. For rental
 searches, provide the rent per week, and for sold listings provide the sale
 price in dollars.}
+
+\item{exclude_houses}{If TRUE (default), excludes detached houses from the
+search results.}
 
 \item{exclude}{If TRUE (default), excludes properties with a deposit already
 taken from rental searches and excludes properites with price withheld from

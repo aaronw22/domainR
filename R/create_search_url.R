@@ -17,6 +17,8 @@
 #'   prices with the same format as the number of bedrooms parameter. For rental
 #'   searches, provide the rent per week, and for sold listings provide the sale
 #'   price in dollars.
+#' @param exclude_houses If TRUE (default), excludes detached houses from the
+#'   search results.
 #' @param exclude If TRUE (default), excludes properties with a deposit already
 #'   taken from rental searches and excludes properites with price withheld from
 #'   sales searches. If FALSE, includes all results.
@@ -30,6 +32,7 @@ create_search_url <- function(sale_type = c("rent", "sold-listings"),
                               beds = NULL,
                               baths = NULL,
                               price = NULL,
+                              exclude_houses = T,
                               exclude = T,
                               ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36") {
   ## Checks
@@ -102,9 +105,16 @@ create_search_url <- function(sale_type = c("rent", "sold-listings"),
     exclude <- ""
   }
 
+  # Exclude houses
+  if (exclude_houses == T) {
+    exclude_houses <- "&ptype=apartment-unit-flat,block-of-units,new-apartments,pent-house,studio,town-house"
+  } else {
+    exclude_houses <- ""
+  }
+
   # Domain URL components
   url <-
-    sprintf("https://www.domain.com.au/%s/?suburb=%s&ptype=apartment-unit-flat,block-of-units,new-apartments,pent-house,studio,town-house&bedrooms=%s&bathrooms=%s%s&establishedtype=established&ssubs=0", sale_type, suburbs, beds, baths, exclude)
+    sprintf("https://www.domain.com.au/%s/?suburb=%s%s&bedrooms=%s&bathrooms=%s%s&establishedtype=established&ssubs=0", sale_type, suburbs, exclude_houses, beds, baths, exclude)
 
   # Load page 1 of Domain results
   page_one_html <-
